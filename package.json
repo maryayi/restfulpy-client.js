@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Carrene/restfulpy-client.js.git"
+    "url": "git+https://github.com/maryayi/restfulpy-client.js.git"
   },
-  "author": "Armin Ayari <armin@carrene.com>",
+  "author": "Mahdi Aryayi <mahdiaryayi@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Carrene/restfulpy-client.js/issues"
+    "url": "https://github.com/maryayi/restfulpy-client.js/issues"
   },
-  "homepage": "https://github.com/Carrene/restfulpy-client.js#readme",
+  "homepage": "https://github.com/maryayi/restfulpy-client.js#readme",
   "dependencies": {
     "jwt-decode": "^2.2.0",
     "url-join": "^4.0.0"
