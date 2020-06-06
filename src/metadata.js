@@ -9,17 +9,27 @@ export default class Metadata {
     this.models = {}
   }
 
-  load (client, entities) {
+  load (client, entities, storageName) {
     let promises = []
     for (let entity in entities) {
       let options = entities[entity]
       promises.push(new Promise((resolve, reject) => {
-        client.request(options.url, 'METADATA').setEncoding(null).send().then(resp => {
-          let modelClass = this.models[entity] = createModelClass(entity, options, client, resp.json)
+        let objectOfMetadata = {}
+        if (storageName) {
+          let record = window.localStorage.getItem(storageName)
+          objectOfMetadata = JSON.parse(record)
+        }
+        if (objectOfMetadata[options.url]) {
+          let modelClass = this.models[entity] = createModelClass(entity, options, client, objectOfMetadata[options.url])
           resolve(modelClass)
-        }).catch(resp => {
-          reject(resp)
-        })
+        } else {
+          client.request(options.url, 'METADATA').setEncoding(null).send().then(resp => {
+            let modelClass = this.models[entity] = createModelClass(entity, options, client, resp.json)
+            resolve(modelClass)
+          }).catch(resp => {
+            reject(resp)
+          })
+        }
       }))
     }
     return Promise.all(promises)

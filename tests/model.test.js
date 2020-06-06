@@ -3,10 +3,10 @@
  */
 import { MockupClient } from './helpers'
 
-describe('Model', function () {
-  it('load', function (done) {
+describe('Model', function() {
+  it('load', function(done) {
     let c = new MockupClient()
-    c.loadMetadata({ Resource: { url: 'resources' } })
+    c.loadMetadata({ entities: { Resource: { url: 'resources' } } })
       .then(() => {
         const Resource = c.metadata.models.Resource
         Resource.load({ id: '<5' })
@@ -25,9 +25,9 @@ describe('Model', function () {
       .catch(done.fail)
   })
 
-  it('loadOne', function (done) {
+  it('loadOne', function(done) {
     let c = new MockupClient()
-    c.loadMetadata({ Resource: { url: 'resources' } })
+    c.loadMetadata({ entities: { Resource: { url: 'resources' } } })
       .then(() => {
         const Resource = c.metadata.models.Resource
         Resource.get('1')
@@ -49,9 +49,9 @@ describe('Model', function () {
       .catch(done.fail)
   })
 
-  it('loadMultipleWithJsonPatch', function (done) {
+  it('loadMultipleWithJsonPatch', function(done) {
     let c = new MockupClient()
-    c.loadMetadata({ Resource: { url: 'resources' } })
+    c.loadMetadata({ entities: { Resource: { url: 'resources' } } })
       .then(() => {
         const Resource = c.metadata.models.Resource
         let jsonPatchRequest = c
@@ -79,9 +79,9 @@ describe('Model', function () {
       .catch(done.fail)
   })
 
-  it('loadOneByAbsolutePath', function (done) {
+  it('loadOneByAbsolutePath', function(done) {
     let c = new MockupClient()
-    c.loadMetadata({ Resource: { url: 'resources' } })
+    c.loadMetadata({ entities: { Resource: { url: 'resources' } } })
       .then(() => {
         const Resource = c.metadata.models.Resource
         Resource.get('1', 'resources')
@@ -103,9 +103,9 @@ describe('Model', function () {
       .catch(done.fail)
   })
 
-  it('fieldExistence', function (done) {
+  it('fieldExistence', function(done) {
     let c = new MockupClient()
-    c.loadMetadata({ Resource: { url: 'resources' } })
+    c.loadMetadata({ entities: { Resource: { url: 'resources' } } })
       .then(() => {
         const Resource = c.metadata.models.Resource
         const newInstance = new Resource()
@@ -119,9 +119,9 @@ describe('Model', function () {
       .catch(done.fail)
   })
 
-  it('CRUD', function (done) {
+  it('CRUD', function(done) {
     let c = new MockupClient()
-    c.loadMetadata({ Resource: { url: 'resources' } })
+    c.loadMetadata({ entities: { Resource: { url: 'resources' } } })
       .then(() => {
         const Resource = c.metadata.models.Resource
         // POST

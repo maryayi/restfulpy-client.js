@@ -83,9 +83,9 @@ export default class Session {
 }
 
 export class BrowserSession extends Session {
-  loadMetadata (entities) {
+  loadMetadata ({ entities, storageName = null }) {
     let metadata = this.createMetadata()
-    return metadata.load(this, entities).then(() => {
+    return metadata.load(this, entities, storageName).then(() => {
       this.saveMetadata(metadata)
     })
   }
